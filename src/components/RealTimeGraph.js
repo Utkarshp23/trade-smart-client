@@ -52,6 +52,7 @@ const RealTimeGraph = () => {
             webSocketFactory: () => new SockJS("http://localhost:8080/ws"),
             onConnect: () => {
                 client.subscribe("/stock/ltp", (message) => {
+                    console.log(message.body);
                     const stockPrice = parseFloat(message.body) / 100; // Adjust price format
                     const currentTime = Date.now() / 1000; // Get current time in seconds
 
